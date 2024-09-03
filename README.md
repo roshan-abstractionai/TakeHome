@@ -3,6 +3,12 @@
 ## Background
 You are tasked with designing and implementing a real-time data processing and analysis system for a large e-commerce platform. The platform generates a high volume of user activity data, including page views, clicks, purchases, and search queries. Your goal is to create a system that can ingest, process, and analyze this data in real-time to provide valuable insights to the business. The system will leverage AWS services for data storage and processing.
 
+## Important Notes
+Please don't spend more than 2-3 hours on the coding/development of this exercise.
+It's okay if you don't finish everything – focus on demonstrating your thought process and approach to solving the problem
+Its okay if the code isn't perfectly running. There will be a follow up session to review whats been done
+
+
 ## Requirements
 
 1. Use Apache Kafka for initial data ingestion (optional - feel free to start with the sample data)
@@ -64,10 +70,4 @@ You are tasked with designing and implementing a real-time data processing and a
 - Design and implementation of the API endpoint
 - Scalability and fault-tolerance considerations
 - Clarity of documentation and explanations
-
-## Important Notes
-
-Dont spend more than 2-3 hours on the coding/development of this exercise.
-It's okay if you don't finish everything – focus on demonstrating your thought process and approach to solving the problem
-Its okay if the code isn't perfectly running.
 
