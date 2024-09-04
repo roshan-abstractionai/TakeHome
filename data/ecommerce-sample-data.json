@@ -1,0 +1,181 @@
+{
+  "events": [
+    {
+      "event_id": "e1001",
+      "event_type": "page_view",
+      "user_id": "u5678",
+      "timestamp": "2024-09-03T10:15:30Z",
+      "data": {
+        "page_url": "/products/electronics/smartphones",
+        "device": "mobile",
+        "browser": "chrome"
+      }
+    },
+    {
+      "event_id": "e1002",
+      "event_type": "product_view",
+      "user_id": "u5678",
+      "timestamp": "2024-09-03T10:16:45Z",
+      "data": {
+        "product_id": "p1234",
+        "product_name": "Smartphone X",
+        "category": "electronics",
+        "price": 599.99
+      }
+    },
+    {
+      "event_id": "e1003",
+      "event_type": "add_to_cart",
+      "user_id": "u5678",
+      "timestamp": "2024-09-03T10:18:20Z",
+      "data": {
+        "product_id": "p1234",
+        "quantity": 1
+      }
+    },
+    {
+      "event_id": "e1004",
+      "event_type": "purchase",
+      "user_id": "u5678",
+      "timestamp": "2024-09-03T10:25:15Z",
+      "data": {
+        "order_id": "o7890",
+        "total_amount": 599.99,
+        "payment_method": "credit_card",
+        "products": [
+          {
+            "product_id": "p1234",
+            "quantity": 1,
+            "price": 599.99
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "e1005",
+      "event_type": "search",
+      "user_id": "u9012",
+      "timestamp": "2024-09-03T11:05:00Z",
+      "data": {
+        "query": "wireless headphones",
+        "results_count": 15
+      }
+    },
+    {
+      "event_id": "e1006",
+      "event_type": "page_view",
+      "user_id": "u9012",
+      "timestamp": "2024-09-03T11:07:30Z",
+      "data": {
+        "page_url": "/products/electronics/audio/wireless-headphones",
+        "device": "desktop",
+        "browser": "firefox"
+      }
+    },
+    {
+      "event_id": "e1007",
+      "event_type": "product_view",
+      "user_id": "u9012",
+      "timestamp": "2024-09-03T11:09:45Z",
+      "data": {
+        "product_id": "p5678",
+        "product_name": "Wireless Headphones Y",
+        "category": "electronics",
+        "price": 199.99
+      }
+    },
+    {
+      "event_id": "e1008",
+      "event_type": "add_to_wishlist",
+      "user_id": "u9012",
+      "timestamp": "2024-09-03T11:11:00Z",
+      "data": {
+        "product_id": "p5678"
+      }
+    },
+    {
+      "event_id": "e1009",
+      "event_type": "page_view",
+      "user_id": "u3456",
+      "timestamp": "2024-09-03T12:30:00Z",
+      "data": {
+        "page_url": "/products/home-and-garden/furniture",
+        "device": "tablet",
+        "browser": "safari"
+      }
+    },
+    {
+      "event_id": "e1010",
+      "event_type": "product_view",
+      "user_id": "u3456",
+      "timestamp": "2024-09-03T12:32:15Z",
+      "data": {
+        "product_id": "p9012",
+        "product_name": "Ergonomic Office Chair",
+        "category": "furniture",
+        "price": 299.99
+      }
+    },
+    {
+      "event_id": "e1011",
+      "event_type": "add_to_cart",
+      "user_id": "u3456",
+      "timestamp": "2024-09-03T12:35:00Z",
+      "data": {
+        "product_id": "p9012",
+        "quantity": 1
+      }
+    },
+    {
+      "event_id": "e1012",
+      "event_type": "purchase",
+      "user_id": "u3456",
+      "timestamp": "2024-09-03T12:40:30Z",
+      "data": {
+        "order_id": "o7891",
+        "total_amount": 299.99,
+        "payment_method": "paypal",
+        "products": [
+          {
+            "product_id": "p9012",
+            "quantity": 1,
+            "price": 299.99
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "e1013",
+      "event_type": "search",
+      "user_id": "u7890",
+      "timestamp": "2024-09-03T13:15:00Z",
+      "data": {
+        "query": "running shoes",
+        "results_count": 30
+      }
+    },
+    {
+      "event_id": "e1014",
+      "event_type": "page_view",
+      "user_id": "u7890",
+      "timestamp": "2024-09-03T13:17:45Z",
+      "data": {
+        "page_url": "/products/sports/footwear/running-shoes",
+        "device": "mobile",
+        "browser": "chrome"
+      }
+    },
+    {
+      "event_id": "e1015",
+      "event_type": "product_view",
+      "user_id": "u7890",
+      "timestamp": "2024-09-03T13:20:00Z",
+      "data": {
+        "product_id": "p3456",
+        "product_name": "Ultra Boost Running Shoes",
+        "category": "sports",
+        "price": 159.99
+      }
+    }
+  ]
+}
