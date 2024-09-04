@@ -1,73 +1,65 @@
 # Real-time Data Processing and Analysis System with AWS Integration
 
-## Background
-You are tasked with designing and implementing a real-time data processing and analysis system for a large e-commerce platform. The platform generates a high volume of user activity data, including page views, clicks, purchases, and search queries. Your goal is to create a system that can ingest, process, and analyze this data in real-time to provide valuable insights to the business. The system will leverage AWS services for data storage and processing.
+## Initial Tasks Breakdown
 
-## Important Notes
-Please don't spend more than 2-3 hours on the coding/development of this exercise.
-It's okay if you don't finish everything – focus on demonstrating your thought process and approach to solving the problem
-Its okay if the code isn't perfectly running. There will be a follow up session to review whats been done
+- Setup Kafka Zookeeper Producer Consumer locally. Start off with that by modifying the existing code
+- Perform the PySpark analysis locally by chaining the data from the consumer
+- Display the results as a log locally
+- Create proper documentation to test the idea out and commit the code
+(if time permits)
+- Push the code to s3 instead of local pyspark
+- Push the pyspark to an ec2 instance
+- Run the ec2 instance using Lambda + API gateway 
 
+## Flow Diagram
 
-## Requirements
+![Architecture Diagram](https://github.com/ashwin-sp/TakeHome/blob/76a492850000365bc3b81b39f1579e458f517565/flow_diagram.png)
 
-1. Use Apache Kafka for initial data ingestion (optional - feel free to start with the sample data)
-2. Use AWS S3 for data storage.
-3. Implement PySpark jobs running on an EC2 instance.
-4. Design a scalable and fault-tolerant architecture.
-5. Implement real-time data processing pipelines.
-6. Create at least one batch processing job for historical data analysis.
-7. Provide a way to visualize or report on the processed data.
+## Setup and Running Instructions
 
-## Tasks
+- Install Kafka 
+```
+tar -xzf kafka_2.13-3.8.0.tgz
+cd kafka_2.13-3.8.0
+```
+- Start Kafka and Zookeeper
+```
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
+```
+- Create a topic 
+```
+bin/kafka-topics.sh --create --topic page_view --bootstrap-server localhost:9092
+```
+- Install the packages with the respective versions in a conda environment of your choice
+```
+pip install pyspark==3.4
+pip install numpy==2.0
+pip install pandas=2.2.2
+```
+- Download the source code
+- Start the jupyter notebook and navigate to the folder containing the source code
+- Run the KafkaProducer notebook first and then KafkaConsumer and see the results in the last cell of KafkaConsumer
 
-1. **Data Ingestion and Storage**:
-   - Design a Kafka topic structure to handle the various types of user activity data.
-   - Implement a simple data generator that simulates user activity and publishes it to Kafka.
-   - Create a pipeline to move data from Kafka to an S3 bucket.
+## Design decisions and trade-offs
 
-2. **EC2 and PySpark Setup**:
-   - Set up an instance with PySpark installed.
-   - Implement an API endpoint on the instance (Fast API) that triggers the PySpark job.
+- Used hard coded topics
+- Sent message object directly as json object to the consumer. Kept Producer as light weight as possible and did the parsing in a parallel thread in the Consumer
+- Assumed product_view as event type to calculate top Product Views 
+- Went with Data -> Kafka -> PySpark to prioritize evaluating the working idea
 
-3. **Real-time Processing**:
-   - Use PySpark to read data from the S3 bucket.
-   - Implement at least two real-time analytics:
-     a. Calculate and update the top 10 most viewed products in the last hour.
-     b. Detect and flag potential fraud based on unusual user behavior patterns.
+## Future considerations
 
-4. **Batch Processing**:
-   - Implement a batch job that runs daily to calculate user cohort retention rates.
+- Push the Kafka to a cloud
+- Should explore Kafka Groups and Partitions for data at scale
+- Separate out the PySpark related code from the KafkaConsumer
+- Should explore window functions for instances such as per hour calculations 
+- Chain the output of KafkaConsumer to s3 by granting appropriate write permissions to s3 
+- Push the PySpark local code as a script to a EC2 instance 
+- Grant EC2 instance permission to access s3 bucket to perform inference on it
+- Explore the possibility of CloudWatch Events to trigger the job
+- Write results back to another s3 bucket
+- Expose it as API by reading the result s3 bucket using lambda + API Gateway with proper CORS and rate limiting
+- Create a budget to keep a track of the expenditure 
 
-5. **Data Visualization**:
-   - Choose an appropriate method to visualize or report on the processed data (you can mock this if time is limited).
-
-6. **API and Job Triggering**:
-   - Design and implement a simple API that allows triggering of the PySpark job on the EC2 instance.
-   - Ensure the API is secure and can handle potential concurrent requests.
-
-7. **Documentation**:
-   - Provide a high-level architecture diagram of your solution, including AWS components.
-   - Document your design decisions, including any trade-offs you considered.
-   - Explain how your solution can scale to handle increased data volume.
-
-## Deliverables
-
-1. Source code for all components (data generator, Spark jobs, API endpoint, etc.).
-2. Instructions to set up the AWS environment (EC2, S3) and deploy the solution.
-3. README file with:
-   - Setup and running instructions
-   - Architecture diagram
-   - Design decisions and trade-offs
-   - Ideas for future improvements or optimizations
-4. A simple script or instructions to demonstrate how to trigger the job via the API.
-
-## Evaluation Criteria
-
-- Overall architecture and system design, including effective use of AWS services
-- Code quality and organization
-- Effective use of PySpark features and S3 integration
-- Design and implementation of the API endpoint
-- Scalability and fault-tolerance considerations
-- Clarity of documentation and explanations
 
